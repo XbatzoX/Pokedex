@@ -1,0 +1,24 @@
+.pkm-container{
+    background-color: rgb(15, 56, 70);
+    color: white;
+}
+
+.headline-main-view{
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pkm-id{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pkm-id img{
+    width: 20px;
+    height: 20px;
+}

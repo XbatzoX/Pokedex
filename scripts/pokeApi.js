@@ -21,13 +21,7 @@ let mainData = {
     }
 };
 
-async function init(){
-    loadMainDataPkm();
-}
-
-function renderMainView(){
-
-}
+let mainDataArr = [];
 
 async function loadUrlPkm(){
     let dataURL = await loadData(BASE_URL);
@@ -56,11 +50,13 @@ function fillMainDataObj(data){
     fillTypesInMain(data);
     fillColorInMain(data.id);
     console.log(mainData);
+    mainDataArr.push(mainData);
+    console.log(mainDataArr);
+    
 }
 
 async function fillTypesInMain(data){
     let countTypes = data.types.length;
-    let typeURL = '';
     for (let index = 0; index < countTypes; index++) {
         switch (index) {
             case 0:
