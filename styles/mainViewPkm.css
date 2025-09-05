@@ -34,6 +34,18 @@
     height: auto;
 }
 
+.type-container{
+    padding: 16px 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.type-container img{
+    height: 24px;
+    width: 100px;
+}
+
 .green{
     background-color: rgb(66,161,41);
 }
