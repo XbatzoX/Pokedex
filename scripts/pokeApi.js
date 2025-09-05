@@ -45,7 +45,7 @@ async function loadMainDataPkm(){
             }else{
                 resolve('');
             }
-        }, 50);
+        }, 100);
     });
 }
 
