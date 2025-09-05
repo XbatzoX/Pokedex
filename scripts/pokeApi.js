@@ -34,7 +34,19 @@ async function loadMainDataPkm(){
     let pkmURL = await loadUrlPkm();
     let dataMain = await loadData(pkmURL);
     console.log(dataMain);
-    fillMainDataObj(dataMain);
+    let color = await fillMainDataObj(dataMain);
+    return new Promise((resolve, reject) => {
+        console.log('start');
+        console.log(color);
+        
+        setTimeout(() => {
+            if((color == '') || (color == 'null')){
+                reject("hat nicht geklappt");
+            }else{
+                resolve('');
+            }
+        }, 50);
+    });
 }
 
 async function loadData(url=''){
@@ -48,11 +60,11 @@ function fillMainDataObj(data){
     mainData.name = data.name;
     mainData.image = data.sprites.other['official-artwork'].front_default;
     fillTypesInMain(data);
-    fillColorInMain(data.id);
+    let color = fillColorInMain(data.id);
     console.log(mainData);
     mainDataArr.push(mainData);
     console.log(mainDataArr);
-    
+    return color;
 }
 
 async function fillTypesInMain(data){
@@ -88,4 +100,5 @@ async function fillColorInMain(id){
     let speciesURL = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
     let response = await loadData(speciesURL);
     mainData.color = response.color.name;
+    return mainData.color;
 }

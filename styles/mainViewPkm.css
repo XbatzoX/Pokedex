@@ -1,12 +1,13 @@
 .pkm-container{
     background-color: rgb(15, 56, 70);
     color: white;
+    width: 250px;
 }
 
 .headline-main-view{
     padding: 8px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: normal;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,4 +22,18 @@
 .pkm-id img{
     width: 20px;
     height: 20px;
+}
+
+.img-container{
+    display: flex;
+    justify-content: center;
+}
+
+.img-container img{
+    width: 70%;
+    height: auto;
+}
+
+.green{
+    background-color: rgb(66,161,41);
 }
