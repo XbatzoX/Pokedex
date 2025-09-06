@@ -31,6 +31,11 @@ function setBgColorOfPkm(slot, i){
         case 'green':
             document.getElementById('img_container' + i).classList.add('green');
             break;
+        case 'red':
+            document.getElementById('img_container' + i).classList.add('red');
+            break;
+        case 'blue':
+            document.getElementById('img_container' + i).classList.add('blue');
         default:
             document.getElementById('img_container' + i).classList.add('green');
             break;

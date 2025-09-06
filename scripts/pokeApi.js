@@ -1,4 +1,4 @@
-const BASE_URL = 'https://pokeapi.co/api/v2/pokemon?limit=5&offset=0';
+const BASE_URL = 'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0';
 
 // let mainData = {
 //     "id" : 0,
@@ -89,12 +89,11 @@ async function loadData(url=''){
 
 async function fillMainDataObj(data, dataElements){
     let mainData = dataElements;
-    let color = 'green;'
     mainData.id = data.id;
     mainData.name = data.name;
     mainData.image = data.sprites.other['official-artwork'].front_default;
     mainData = await fillTypesInMain(data, mainData);
-    // let color = await fillColorInMain(data.id);
+    mainData = await fillColorInMain(data.id, mainData);
     console.log(mainData);
     // mainDataArr.push(mainData);
     console.log(mainDataArr);
@@ -132,9 +131,10 @@ async function loadTypesURL(data, index){
     return imgURL;
 }
 
-async function fillColorInMain(id){
+async function fillColorInMain(id, elementData){
+    mainData = elementData;
     let speciesURL = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
     let response = await loadData(speciesURL);
     mainData.color = response.color.name;
-    return mainData.color;
+    return mainData;
 }
