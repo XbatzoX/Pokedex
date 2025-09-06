@@ -2,6 +2,7 @@
     background-color: rgb(15, 56, 70);
     color: white;
     width: 250px;
+    border-radius: 5px;
 }
 
 .headline-main-view{

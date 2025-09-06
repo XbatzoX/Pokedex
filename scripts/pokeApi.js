@@ -1,52 +1,84 @@
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon?limit=5&offset=0';
 
-let mainData = {
-    "id" : 0,
-    "name" : "",
-    "image" : "",
-    "color" : "",
-    "types" : {
-        "slot_1" : {
-            "name" : "",
-            "url" : ""
-        },
-        "slot_2" : {
-            "name" : "",
-            "url" : ""
-        },
-        "slot_3" : {
-            "name" : "",
-            "url" : ""
-        }
-    }
-};
+// let mainData = {
+//     "id" : 0,
+//     "name" : "",
+//     "image" : "",
+//     "color" : "",
+//     "types" : {
+//         "slot_1" : {
+//             "name" : "",
+//             "url" : ""
+//         },
+//         "slot_2" : {
+//             "name" : "",
+//             "url" : ""
+//         },
+//         "slot_3" : {
+//             "name" : "",
+//             "url" : ""
+//         }
+//     }
+// };
 
 let mainDataArr = [];
 
 async function loadUrlPkm(){
     let dataURL = await loadData(BASE_URL);
-    let pkmURL = dataURL.results[0].url;
-    console.log(pkmURL);
-    return pkmURL;
+    // let pkmURL = dataURL.results[0].url;
+    console.log(dataURL);
+    return dataURL;
+}
+
+function pushDataToArray(obj){
+    mainDataArr.push(obj);
 }
 
 async function loadMainDataPkm(){
-    let pkmURL = await loadUrlPkm();
-    let dataMain = await loadData(pkmURL);
-    console.log(dataMain);
-    let color = await fillMainDataObj(dataMain);
-    return new Promise((resolve, reject) => {
-        console.log('start');
-        console.log(color);
-        
-        setTimeout(() => {
-            if((color == '') || (color == 'null')){
-                reject("hat nicht geklappt");
-            }else{
-                resolve('');
+    let color = 'green';
+    let dataURL = await loadUrlPkm();
+    let amountOfPkm = dataURL.results.length;
+    for (let index = 0; index < amountOfPkm; index++) {
+        let mainData = {
+            "id" : 0,
+            "name" : "",
+            "image" : "",
+            "color" : "",
+            "types" : {
+                "slot_1" : {
+                    "name" : "",
+                    "url" : ""
+                },
+                "slot_2" : {
+                    "name" : "",
+                    "url" : ""
+                },
+                "slot_3" : {
+                    "name" : "",
+                    "url" : ""
+                }
             }
-        }, 100);
-    });
+        };
+        let pkmURL = dataURL.results[index].url;
+        let dataFromApi = await loadData(pkmURL);
+        console.log(dataFromApi);
+        let pushData = await fillMainDataObj(dataFromApi, mainData);
+        mainData = pushData;
+        // mainDataArr.push(pushData);
+        pushDataToArray(mainData);
+    }
+    return new Promise((resolve, reject) => {
+            console.log('start');
+            console.log(color);
+        
+            setTimeout(() => {
+                if((color == '') || (color == 'null')){
+                    reject("hat nicht geklappt");
+                }else{
+                    resolve('');
+                }
+            }, 1000);
+        });
 }
 
 async function loadData(url=''){
@@ -55,19 +87,22 @@ async function loadData(url=''){
     return responseToJson;
 }
 
-function fillMainDataObj(data){
+async function fillMainDataObj(data, dataElements){
+    let mainData = dataElements;
+    let color = 'green;'
     mainData.id = data.id;
     mainData.name = data.name;
     mainData.image = data.sprites.other['official-artwork'].front_default;
-    fillTypesInMain(data);
-    let color = fillColorInMain(data.id);
+    mainData = await fillTypesInMain(data, mainData);
+    // let color = await fillColorInMain(data.id);
     console.log(mainData);
-    mainDataArr.push(mainData);
+    // mainDataArr.push(mainData);
     console.log(mainDataArr);
-    return color;
+    return mainData;
 }
 
-async function fillTypesInMain(data){
+async function fillTypesInMain(data, dataElements){
+    let mainData = dataElements;
     let countTypes = data.types.length;
     for (let index = 0; index < countTypes; index++) {
         switch (index) {
@@ -87,6 +122,7 @@ async function fillTypesInMain(data){
                 break;
         } 
     }
+    return mainData;
 }
 
 async function loadTypesURL(data, index){

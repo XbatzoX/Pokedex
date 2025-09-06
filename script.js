@@ -2,6 +2,8 @@
 async function init(){
     await usePromis();
     renderMainView();
+    // customizeMainData();
+    showType();
 }
 
 function renderMainView(){
@@ -10,8 +12,8 @@ function renderMainView(){
     let objKeys = [];
     let amountOfMainPkm = mainDataArr.length;
     for (let index = 0; index < amountOfMainPkm; index++) {
-        objKeys = Object.keys(mainDataArr[index]);
-        contentMainRef.innerHTML += getMainViewPkmTemplate(index, objKeys);
+        // objKeys = Object.keys(mainDataArr[index]);
+        contentMainRef.innerHTML += getMainViewPkmTemplate(index);
         setBgColorOfPkm(mainDataArr[index].color, index);
     }
 }
@@ -30,10 +32,18 @@ function setBgColorOfPkm(slot, i){
             document.getElementById('img_container' + i).classList.add('green');
             break;
         default:
+            document.getElementById('img_container' + i).classList.add('green');
             break;
     }
 }
 
-function hideImg(number){
-    document.getElementById('img_' + number).style.display = 'none';
+function showType(){
+    let arrLength = mainDataArr.length;
+    for (let index = 0; index < arrLength; index++) {
+        for (let i = 1; i < 4; i++) {
+            if(mainDataArr[index].types[`slot_${i}`].name != ''){
+                document.getElementById('img_' + mainDataArr[index].name + '_' + i).style.display = '';
+            }
+        }
+    }
 }
