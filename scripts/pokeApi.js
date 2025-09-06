@@ -1,4 +1,5 @@
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0';
+let PKM_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
 // let mainData = {
 //     "id" : 0,
@@ -137,4 +138,17 @@ async function fillColorInMain(id, elementData){
     let response = await loadData(speciesURL);
     mainData.color = response.color.name;
     return mainData;
+}
+
+async function loadDialogData(arrIndex){
+    let dialogData = {
+        "basic" : {
+            "height" : "",
+            "weight" : "",
+            "base_exp" : "",
+            "abilities" : ""
+        },
+    };
+    let dataOfPkm = await loadData(PKM_URL + (arrIndex + 1));
+
 }
