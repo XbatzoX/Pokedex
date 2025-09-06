@@ -58,3 +58,32 @@
 .blue{
     background-color: rgb(41,128,239);
 }
+
+.white{
+    background-color: white;
+}
+
+.brown{
+    background-color: rgb(145,81,33);
+}
+
+.yellow{
+    background-color: rgb(250,192,0);
+}
+
+.purple{
+    background-color: rgb(144,64,204);
+}
+
+.pink{
+    background-color: rgb(241,112,241);
+}
+
+.gray{
+    background-color: rgb(159,161,159);
+}
+
+.black{
+    background-color: rgba(0,0,0,1);
+}
+

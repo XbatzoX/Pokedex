@@ -5,7 +5,7 @@ body{
     font-family: myRoboto;
 }
 
-header{
+header, footer{
     background-color: rgb(15, 56, 70);
 }
 
@@ -32,6 +32,10 @@ header{
     height: 56px;
 }
 
+main{
+    min-height: calc(100vh - 191px);
+}
+
 .main-container{
     max-width: 1440px;
     margin: 0 auto;
@@ -43,4 +47,32 @@ header{
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 16px;
+}
+
+.footer-container{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 16px 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16pxpx;
+}
+
+.footer-logo{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.footer-logo img{
+    width: 52px;
+    height: 52px;
+}
+
+.footer-logo span{
+    font-family: 'myAsimovian';
+    font-size: 32px;
+    color: white;
 }
