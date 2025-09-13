@@ -76,3 +76,31 @@ main{
     font-size: 32px;
     color: white;
 }
+
+.loading-spinner{
+    color: white;
+    font-size: 18px;
+    padding-top: 120px;
+}
+
+.loading-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.loading-box span{
+    padding-left: 20px;
+}
+
+.pokeball-spin{
+    height: 200px;
+    width: 200px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

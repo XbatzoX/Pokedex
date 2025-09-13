@@ -2,7 +2,9 @@ let myDialogData = {};
 let pageIndex = 0;
 
 async function init(){
+    toggleVisibilityLoadingSpinner();
     await usePromis();
+    toggleVisibilityLoadingSpinner();
     renderMainView();
     // customizeMainData();
     showType();
@@ -191,4 +193,8 @@ function checkThirdChain(objData){
         document.getElementById('arrow_check').classList.add('invisible');
         document.getElementById('chain_check').classList.add('invisible');
     }
+}
+
+function toggleVisibilityLoadingSpinner(){
+    document.getElementById('loading_spinner').classList.toggle('invisible');
 }
