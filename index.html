@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+
+    <link rel="shortcut icon" href="./assets/img/pokeball_trans.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/mainViewPkm.css">
+    <link rel="stylesheet" href="./styles/dialogViewPkm.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="./scripts/pokeApi.js"></script>
+    <script src="./scripts/template.js"></script>
+    <script src="./script.js"></script>
+</head>
+<body onload="init()">
+    <header>
+        <div class="header-content">
+            <div class="headline">
+                <img src="./assets/img/pokeball.png" alt="logo as a pokeball">
+                <span>Pokedex</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <dialog id="pkmDialog" class="dialog-design" onclick="closeDialog()"></dialog>
+
+        <div id="main_container" class="main-container"></div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="./assets/img/pokeball_trans.png" alt="white pokeball">
+                <span>Pokedex</span>
+            </div>
+            <span>Copyright © 2025 Ibis Pokedex</span>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

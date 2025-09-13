@@ -1,0 +1,94 @@
+.pkm-container{
+    background-color: rgb(15, 56, 70);
+    color: white;
+    width: 250px;
+    border-radius: 5px;
+}
+
+.headline-main-view{
+    padding: 8px;
+    font-size: 16px;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pkm-id{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pkm-id img{
+    width: 20px;
+    height: 20px;
+}
+
+.img-container{
+    display: flex;
+    justify-content: center;
+}
+
+.img-container:hover{
+    cursor: pointer;
+    box-shadow: 20px 20px 50px 10px white inset;
+}
+
+.img-container img{
+    width: 70%;
+    height: auto;
+}
+
+.type-container{
+    padding: 16px 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.type-container img{
+    height: 24px;
+    width: 100px;
+}
+
+.green{
+    background-color: rgb(66,161,41);
+}
+
+.red{
+    background-color: rgb(230,40,41);
+}
+
+.blue{
+    background-color: rgb(41,128,239);
+}
+
+.white{
+    background-color: white;
+}
+
+.brown{
+    background-color: rgb(145,81,33);
+}
+
+.yellow{
+    background-color: rgb(250,192,0);
+}
+
+.purple{
+    background-color: rgb(144,64,204);
+}
+
+.pink{
+    background-color: rgb(241,112,241);
+}
+
+.gray{
+    background-color: rgb(159,161,159);
+}
+
+.black{
+    background-color: rgba(0,0,0,1);
+}
+

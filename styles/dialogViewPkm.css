@@ -1,0 +1,127 @@
+.dialog-design{
+    padding: 0;
+    border-radius: 5px;
+}
+
+.dialog-container{
+    background-color: rgb(15, 56, 70);
+    color: white;
+    width: 400px; 
+}
+
+.dialog-img-container{
+    display: flex;
+    justify-content: center;
+}
+
+.dialog-img-container img{
+    width: 70%;
+    height: auto;
+}
+
+.dialog-headline{
+    padding: 8px;
+    font-size: 18px;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dialog-ctrl-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: rgb(22, 76, 94);
+}
+
+.btn-ctrl{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.btn-ctrl:hover{
+    cursor: pointer;
+    background-color: rgb(15, 56, 70);
+    border-radius: 10px;
+}
+
+.underline{
+    border-bottom: 3px solid rgb(54, 157, 195);
+}
+
+.invisible{
+    display: none;
+}
+
+table{
+    padding-top: 40px;
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 100%;
+}
+td{
+    padding-right: 32px;
+    padding-bottom: 16px;
+}
+
+.data-container{
+    background-color: rgb(17, 62, 77);
+}
+
+.progress-bar{
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bg-progress{
+    width: 60%;
+    background-color: rgb(8, 33, 41);
+}
+
+.value-progress{
+    max-width: 100%;
+    height: 14px;
+    font-size: 12px;
+    background-color: rgb(54, 157, 195);
+    text-align: center;
+}
+
+.main-card{
+    height: 242px;
+}
+
+.stats-card{
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.chain-card{
+    height: 242px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.chain-pkm{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chain-pkm img{
+    height: 70px;
+    width: 70px;
+}
+
+.arrow-right{
+    font-size: 24px;
+    color: rgb(54, 157, 195);
+}
