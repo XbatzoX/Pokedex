@@ -8,6 +8,7 @@ async function init(){
     renderMainView();
     // customizeMainData();
     showType();
+    checkOffset();
 }
 
 function renderMainView(){
@@ -229,8 +230,15 @@ function activateViewOfPkm(number, strValue){
 function loadNextPage(){
     document.getElementById('main_container').replaceChildren();
     document.getElementById('ctrl_load_pkm').replaceChildren();
+    document.getElementById('input_field').value = '';
     mainDataArr = [];
     offset = offset + 10;
     BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`;
     init();
+}
+
+function checkOffset(){
+    if(offset > 0){
+        document.getElementById('previous_page_btn').classList.remove('invisible');
+    }
 }
