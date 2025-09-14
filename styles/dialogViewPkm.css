@@ -125,3 +125,20 @@ td{
     font-size: 24px;
     color: rgb(54, 157, 195);
 }
+
+.load-arrow-btn{
+    padding: 0px 10px;
+    border: 2px solid rgb(54, 157, 195);
+    border-radius: 5px;
+    background-color: rgb(15, 56, 70);
+}
+
+.load-arrow-btn:hover{
+    cursor: pointer;
+    background-color: rgb(22, 76, 94);
+}
+
+.load-arrow-btn span{
+    color: rgb(54, 157, 195);
+    font-size: 12px;
+}

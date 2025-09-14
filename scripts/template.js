@@ -22,7 +22,7 @@ function getMainViewPkmTemplate(i){
 
 function getLoadNextPkmTemplate(){
      return `<div class="ctrl-load-pkm-box">
-               <button id="previous_page_btn" class="load-btn invisible">previous</button>
+               <button id="previous_page_btn" class="load-btn invisible" onclick="loadPreviousPage()">previous</button>
                <button id="next_page_btn" class="load-btn"onclick="loadNextPage()">next</button>
           </div>`
 }
@@ -40,9 +40,15 @@ function getDialogTemplate(i, data){
                     <img src="${mainDataArr[i].image}" alt="an img of pokemon">
                </div>
                <div class="type-container">
+                    <div id="load_pkm_left" class="load-arrow-btn">
+                         <span><</span>
+                    </div>
                     <img id="dialog_img_${mainDataArr[i].name}_1" src="${mainDataArr[i].types.slot_1.url}" alt="first type of pokemon" style="display: none;">
                     <img id="dialog_img_${mainDataArr[i].name}_2" src="${mainDataArr[i].types.slot_2.url}" alt="second type of pokemon" style="display: none;">
                     <img id="dialog_img_${mainDataArr[i].name}_3" src="${mainDataArr[i].types.slot_3.url}" alt="third type of pokemon" style="display: none;">
+                    <div id="load_pkm_right" class="load-arrow-btn" onclick="loadNextPkmInDialog(${i})">
+                         <span>></span>
+                    </div>
                </div>
                <div class="data-container">
                     <div class="dialog-ctrl-box">

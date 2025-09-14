@@ -84,8 +84,11 @@ function showType(){
 }
 
 async function renderDialog(indexArr){
+    let isDialogOpen = document.getElementById('pkmDialog').open;
     myDialogData = await loadDialogData(indexArr);
-    openDialog();
+    if(!isDialogOpen){
+        openDialog();
+    }
     const contentDialogRef = document.getElementById('pkmDialog');
     contentDialogRef.innerHTML = getDialogTemplate(indexArr, myDialogData);
     setBgColorOfDialog(mainDataArr[indexArr].color, indexArr);
@@ -237,8 +240,29 @@ function loadNextPage(){
     init();
 }
 
+function loadPreviousPage(){
+    document.getElementById('main_container').replaceChildren();
+    document.getElementById('ctrl_load_pkm').replaceChildren();
+    document.getElementById('input_field').value = '';
+    mainDataArr = [];
+    offset = offset - 10;
+    BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`;
+    init(); 
+}
+
 function checkOffset(){
     if(offset > 0){
         document.getElementById('previous_page_btn').classList.remove('invisible');
+    }else if(offset <= 0){
+        document.getElementById('previous_page_btn').classList.add('invisible');
     }
+}
+
+function loadNextPkmInDialog(actualIndex){
+    let arrIndex = actualIndex + 1;
+    if (arrIndex >= mainDataArr.length) {
+        arrIndex = 0;
+    }
+    document.getElementById('pkmDialog').replaceChildren();
+    renderDialog(arrIndex);
 }
