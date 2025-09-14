@@ -1,4 +1,5 @@
-const BASE_URL = 'https://pokeapi.co/api/v2/pokemon?limit=10&offset=0';
+let offset = 0;
+let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`;
 let PKM_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
 // let mainData = {

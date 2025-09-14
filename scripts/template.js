@@ -23,7 +23,7 @@ function getMainViewPkmTemplate(i){
 function getLoadNextPkmTemplate(){
      return `<div class="ctrl-load-pkm-box">
                <button id="previous_page_btn" class="load-btn">previous</button>
-               <button id="next_page_btn" class="load-btn">next</button>
+               <button id="next_page_btn" class="load-btn"onclick="loadNextPage()">next</button>
           </div>`
 }
 
