@@ -198,3 +198,28 @@ function checkThirdChain(objData){
 function toggleVisibilityLoadingSpinner(){
     document.getElementById('loading_spinner').classList.toggle('invisible');
 }
+
+function searchPkm(){
+    let inputValue = document.getElementById('input_field').value;
+    let numberOfChar = inputValue.length;
+    disableViewOfPkm(numberOfChar);
+    activateViewOfPkm(numberOfChar, inputValue);
+}
+
+function disableViewOfPkm(number){
+    if(number >= 3){
+        for (let index = 0; index < mainDataArr.length; index++) {
+           document.getElementById('search_id' + index).classList.add('invisible');
+        }
+    }
+}
+
+function activateViewOfPkm(number, strValue){
+    let searchResult = -1;
+    for (let index = 0; index < mainDataArr.length; index++) {
+        searchResult = mainDataArr[index].name.search(strValue);
+        if((number < 3) || (searchResult >= 0)){
+            document.getElementById('search_id' + index).classList.remove('invisible');
+        }
+    }
+}

@@ -16,6 +16,9 @@ header, footer{
     padding-right: 50px;
     padding-top: 16px;
     padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .headline{
@@ -103,4 +106,9 @@ main{
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.input-field{
+    font-family: myRoboto;
+    border-radius: 5px;
 }
