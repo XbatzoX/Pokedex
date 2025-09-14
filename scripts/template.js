@@ -20,6 +20,13 @@ function getMainViewPkmTemplate(i){
           </div>`;
 }
 
+function getLoadNextPkmTemplate(){
+     return `<div class="ctrl-load-pkm-box">
+               <button id="previous_page_btn" class="load-btn">previous</button>
+               <button id="next_page_btn" class="load-btn">next</button>
+          </div>`
+}
+
 function getDialogTemplate(i, data){
      return `<div id="dialog_${i}" class="dialog-container" onclick="stopBubbling(event)">
                <div class="dialog-headline">

@@ -112,3 +112,28 @@ main{
     font-family: myRoboto;
     border-radius: 5px;
 }
+
+.ctrl-load-pkm-box{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.load-btn{
+    font-family: myAsimovian;
+    font-size: 16px;
+    padding: 4px 6px;
+    width: 100px;
+    text-align: center;
+    border: 2px solid rgb(54, 157, 195);
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(15, 56, 70);
+}
+
+.load-btn:hover{
+    cursor: pointer;
+    background-color: rgb(22, 88, 110);
+}

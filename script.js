@@ -13,6 +13,8 @@ async function init(){
 function renderMainView(){
     const contentMainRef = document.getElementById('main_container');
     contentMainRef.innerHTML = '';
+    const contentLoadNextPageRef = document.getElementById('ctrl_load_pkm');
+    contentLoadNextPageRef.innerHTML = '';
     let objKeys = [];
     let amountOfMainPkm = mainDataArr.length;
     for (let index = 0; index < amountOfMainPkm; index++) {
@@ -20,6 +22,7 @@ function renderMainView(){
         contentMainRef.innerHTML += getMainViewPkmTemplate(index);
         setBgColorOfPkm(mainDataArr[index].color, index);
     }
+    contentLoadNextPageRef.innerHTML = getLoadNextPkmTemplate();
 }
 
 async function usePromis(){
@@ -88,7 +91,6 @@ async function renderDialog(indexArr){
     showTypeInDialog(indexArr);
     checkThirdChain(myDialogData);
     console.log(myDialogData);
-    
 }
 
 function setBgColorOfDialog(slot, i){
