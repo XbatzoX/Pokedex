@@ -204,8 +204,13 @@ function fillDialogBasicData(basicObj, pkmData){
     basicObj.basic.height = String(pkmData.height) + " inches";
     basicObj.basic.weight = String(pkmData.weight) + " lbs";
     basicObj.basic.base_exp = String(pkmData.base_experience);
-    basicObj.basic.abilities = (pkmData.abilities[0].ability.name + ", " +
+    if(pkmData.abilities.length > 1){
+        basicObj.basic.abilities = (pkmData.abilities[0].ability.name + ", " +
         pkmData.abilities[1].ability.name);
+    }else{
+        basicObj.basic.abilities = (pkmData.abilities[0].ability.name); 
+    }
+    
     return basicObj;
 }
 
