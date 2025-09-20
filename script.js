@@ -6,7 +6,6 @@ async function init(){
     await usePromis();
     toggleVisibilityLoadingSpinner();
     renderMainView();
-    // customizeMainData();
     showType();
     checkOffset();
 }
@@ -16,10 +15,8 @@ function renderMainView(){
     contentMainRef.innerHTML = '';
     const contentLoadNextPageRef = document.getElementById('ctrl_load_pkm');
     contentLoadNextPageRef.innerHTML = '';
-    let objKeys = [];
     let amountOfMainPkm = mainDataArr.length;
     for (let index = 0; index < amountOfMainPkm; index++) {
-        // objKeys = Object.keys(mainDataArr[index]);
         contentMainRef.innerHTML += getMainViewPkmTemplate(index);
         setBgColorOfPkm(mainDataArr[index].color, index);
     }
@@ -35,40 +32,11 @@ async function usePromis(){
 }
 
 function setBgColorOfPkm(slot, i){
-    switch (slot) {
-        case 'green':
-            document.getElementById('img_container' + i).classList.add('green');
-            break;
-        case 'red':
-            document.getElementById('img_container' + i).classList.add('red');
-            break;
-        case 'blue':
-            document.getElementById('img_container' + i).classList.add('blue');
-            break;
-        case 'white':
-            document.getElementById('img_container' + i).classList.add('white');
-            break;
-        case 'brown':
-            document.getElementById('img_container' + i).classList.add('brown');
-            break;
-        case 'yellow':
-            document.getElementById('img_container' + i).classList.add('yellow');
-            break;
-         case 'purple':
-            document.getElementById('img_container' + i).classList.add('purple');
-            break;
-        case 'pink':
-            document.getElementById('img_container' + i).classList.add('pink');
-            break;
-        case 'gray':
-            document.getElementById('img_container' + i).classList.add('gray');
-            break;
-        case 'black':
-            document.getElementById('img_container' + i).classList.add('black');
-            break;
-        default:
-            document.getElementById('img_container' + i).classList.add('green');
-            break;
+    if(slot != ''){
+        document.getElementById('img_container' + i).classList.add(slot);
+    }
+    else{
+        document.getElementById('img_container' + i).classList.add('green');
     }
 }
 
@@ -95,44 +63,14 @@ async function renderDialog(indexArr){
     showTypeInDialog(indexArr);
     checkSecondChain(myDialogData);
     checkThirdChain(myDialogData);
-    console.log(myDialogData);
 }
 
 function setBgColorOfDialog(slot, i){
-    switch (slot) {
-        case 'green':
-            document.getElementById('dialog_img_container' + i).classList.add('green');
-            break;
-        case 'red':
-            document.getElementById('dialog_img_container' + i).classList.add('red');
-            break;
-        case 'blue':
-            document.getElementById('dialog_img_container' + i).classList.add('blue');
-            break;
-        case 'white':
-            document.getElementById('dialog_img_container' + i).classList.add('white');
-            break;
-        case 'brown':
-            document.getElementById('dialog_img_container' + i).classList.add('brown');
-            break;
-        case 'yellow':
-            document.getElementById('dialog_img_container' + i).classList.add('yellow');
-            break;
-         case 'purple':
-            document.getElementById('dialog_img_container' + i).classList.add('purple');
-            break;
-        case 'pink':
-            document.getElementById('dialog_img_container' + i).classList.add('pink');
-            break;
-        case 'gray':
-            document.getElementById('dialog_img_container' + i).classList.add('gray');
-            break;
-        case 'black':
-            document.getElementById('dialog_img_container' + i).classList.add('black');
-            break;
-        default:
-            document.getElementById('dialog_img_container' + i).classList.add('green');
-            break;
+    if(slot != ''){
+        document.getElementById('dialog_img_container' + i).classList.add(slot);
+    }
+    else{
+        document.getElementById('dialog_img_container' + i).classList.add('green');
     }
 }
 
@@ -161,38 +99,27 @@ function stopBubbling(event){
 function showCard(number){
     switch (number) {
         case 0:
-            document.getElementById('chain_btn').classList.remove('underline');
-            document.getElementById('chain_container').classList.add('invisible');
-            document.getElementById('stats_btn').classList.remove('underline');
-            document.getElementById('stats_card').classList.add('invisible');
-            document.getElementById('main_btn').classList.add('underline');
-            document.getElementById('main_card').classList.remove('invisible');
+            customizeClassesFromCardView('chain_btn', 'chain_container', 'stats_btn', 'stats_card', 'main_btn', 'main_card');
             break;
         case 1:
-            document.getElementById('chain_btn').classList.remove('underline');
-            document.getElementById('chain_container').classList.add('invisible');
-            document.getElementById('main_btn').classList.remove('underline');
-            document.getElementById('main_card').classList.add('invisible');
-            document.getElementById('stats_btn').classList.add('underline');
-            document.getElementById('stats_card').classList.remove('invisible');
+            customizeClassesFromCardView('chain_btn', 'chain_container', 'main_btn', 'main_card', 'stats_btn', 'stats_card');
             break;
         case 2:
-            document.getElementById('main_btn').classList.remove('underline');
-            document.getElementById('main_card').classList.add('invisible');
-            document.getElementById('stats_card').classList.add('invisible');
-            document.getElementById('stats_btn').classList.remove('underline');
-            document.getElementById('chain_btn').classList.add('underline');
-            document.getElementById('chain_container').classList.remove('invisible');
+            customizeClassesFromCardView('main_btn', 'main_card', 'stats_btn', 'stats_card', 'chain_btn', 'chain_container');
             break;
         default:
-            document.getElementById('chain_btn').classList.remove('underline');
-            document.getElementById('chain_container').classList.add('invisible');
-            document.getElementById('stats_btn').classList.remove('underline');
-            document.getElementById('stats_card').add('invisible');
-            document.getElementById('main_btn').classList.add('underline');
-            document.getElementById('main_card').classList.remove('invisible');
+            customizeClassesFromCardView('chain_btn', 'chain_container', 'stats_btn', 'stats_card', 'main_btn', 'main_card');
             break;
     }
+}
+
+function customizeClassesFromCardView(btn_1, card_1, btn_2, card_2, btn_3, card_3){
+    document.getElementById(btn_1).classList.remove('underline');
+    document.getElementById(card_1).classList.add('invisible');
+    document.getElementById(btn_2).classList.remove('underline');
+    document.getElementById(card_2).classList.add('invisible');
+    document.getElementById(btn_3).classList.add('underline');
+    document.getElementById(card_3).classList.remove('invisible');
 }
 
 function checkSecondChain(objData){
