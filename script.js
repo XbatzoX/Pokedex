@@ -93,6 +93,7 @@ async function renderDialog(indexArr){
     contentDialogRef.innerHTML = getDialogTemplate(indexArr, myDialogData);
     setBgColorOfDialog(mainDataArr[indexArr].color, indexArr);
     showTypeInDialog(indexArr);
+    checkSecondChain(myDialogData);
     checkThirdChain(myDialogData);
     console.log(myDialogData);
 }
@@ -194,6 +195,13 @@ function showCard(number){
     }
 }
 
+function checkSecondChain(objData){
+    if(objData.chain[1].pkmName == ''){
+        document.getElementById('first_arrow_check').classList.add('invisible');
+        document.getElementById('first_chain_check').classList.add('invisible');
+    }
+}
+
 function checkThirdChain(objData){
     if(objData.chain[2].pkmName == ''){
         document.getElementById('arrow_check').classList.add('invisible');
@@ -262,6 +270,15 @@ function loadNextPkmInDialog(actualIndex){
     let arrIndex = actualIndex + 1;
     if (arrIndex >= mainDataArr.length) {
         arrIndex = 0;
+    }
+    document.getElementById('pkmDialog').replaceChildren();
+    renderDialog(arrIndex);
+}
+
+function loadPreviousPkmInDialog(actualIndex){
+    let arrIndex = actualIndex - 1;
+    if(arrIndex < 0){
+        arrIndex = (mainDataArr.length - 1);
     }
     document.getElementById('pkmDialog').replaceChildren();
     renderDialog(arrIndex);

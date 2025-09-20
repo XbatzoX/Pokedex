@@ -92,3 +92,14 @@
     background-color: rgba(0,0,0,1);
 }
 
+@media(max-width:500px){
+    .pkm-container{
+        width: 200px;
+    }
+
+    .type-container img{
+        height: 20px;
+        width:80px;
+    }
+}
+

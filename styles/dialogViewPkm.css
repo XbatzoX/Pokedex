@@ -28,6 +28,18 @@
     align-items: center;
 }
 
+.type-container-dialog{
+    padding: 16px 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.type-container-dialog img{
+    height: 24px;
+    width: 100px;
+}
+
 .dialog-ctrl-box{
     display: flex;
     justify-content: space-between;
@@ -141,4 +153,58 @@ td{
 .load-arrow-btn span{
     color: rgb(54, 157, 195);
     font-size: 12px;
+}
+
+@media(max-width:500px){
+    .dialog-container{
+        width: 250px;
+    }
+
+    .btn-ctrl span{
+        font-size: 16px;
+    }
+
+    .type-container-dialog{
+        padding: 16px 6px;
+        justify-content: space-between;
+    }
+
+    .type-container-dialog img{
+        height: 20px;
+        width:75px;
+    }
+
+    .main-card{
+        font-size: 14px;
+    }
+
+    td{
+        padding-right: 24px;
+    }
+
+    .stats-card{
+        height: 210px;
+    }
+
+    .progress-bar span{
+        font-size: 13px;
+    }
+
+    .chain-card{
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .chain-pkm{
+        padding: 8px;
+    }
+
+    .chain-pkm img{
+        height: 60px;
+        width: 60px;
+    }
+
+    .chain-pkm span{
+        font-size: 14px;
+    }
 }
