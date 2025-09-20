@@ -1,5 +1,5 @@
 let offset = 0;
-let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`;
+let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`;
 let PKM_URL = 'https://pokeapi.co/api/v2/pokemon/';
 let mainDataArr = [];
 
@@ -101,8 +101,10 @@ async function loadDialogData(arrIndex){
 }
 
 function fillDialogBasicData(basicObj, pkmData){
-    basicObj.basic.height = String(pkmData.height) + " inches";
-    basicObj.basic.weight = String(pkmData.weight) + " lbs";
+    pkmData.height = (pkmData.height / 10.0).toFixed(1);
+    basicObj.basic.height = String(pkmData.height) + " m";
+    pkmData.weight = (pkmData.weight / 10.0).toFixed(1);
+    basicObj.basic.weight = String(pkmData.weight) + " kg";
     basicObj.basic.base_exp = String(pkmData.base_experience);
     if(pkmData.abilities.length > 1){
         basicObj.basic.abilities = (pkmData.abilities[0].ability.name + ", " +

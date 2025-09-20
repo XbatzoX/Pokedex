@@ -5,6 +5,10 @@ body{
     font-family: myRoboto;
 }
 
+body:has(.dialog-design[open]){
+    overflow: hidden;
+}
+
 header, footer{
     background-color: rgb(15, 56, 70);
 }

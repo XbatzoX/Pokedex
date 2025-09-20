@@ -170,8 +170,8 @@ function loadNextPage(){
     document.getElementById('ctrl_load_pkm').replaceChildren();
     document.getElementById('input_field').value = '';
     mainDataArr = [];
-    offset = offset + 10;
-    BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`;
+    offset = offset + 20;
+    BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`;
     init();
 }
 
@@ -180,8 +180,8 @@ function loadPreviousPage(){
     document.getElementById('ctrl_load_pkm').replaceChildren();
     document.getElementById('input_field').value = '';
     mainDataArr = [];
-    offset = offset - 10;
-    BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`;
+    offset = offset - 20;
+    BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`;
     init(); 
 }
 
