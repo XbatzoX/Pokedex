@@ -39,6 +39,11 @@ header, footer{
     height: 56px;
 }
 
+input::placeholder{
+    color: black;
+    opacity: 0.3;
+}
+
 main{
     min-height: calc(100vh - 191px);
 }

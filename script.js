@@ -61,8 +61,7 @@ async function renderDialog(indexArr){
     contentDialogRef.innerHTML = getDialogTemplate(indexArr, myDialogData);
     setBgColorOfDialog(mainDataArr[indexArr].color, indexArr);
     showTypeInDialog(indexArr);
-    checkSecondChain(myDialogData);
-    checkThirdChain(myDialogData);
+    checkChain(myDialogData);
 }
 
 function setBgColorOfDialog(slot, i){
@@ -122,20 +121,18 @@ function customizeClassesFromCardView(btn_1, card_1, btn_2, card_2, btn_3, card_
     document.getElementById(card_3).classList.remove('invisible');
 }
 
-function checkSecondChain(objData){
-    if(objData.chain[1].pkmName == ''){
-        document.getElementById('first_arrow_check').classList.add('invisible');
-        document.getElementById('first_chain_check').classList.add('invisible');
-    }
+function checkChain(objData){
+    customizeChainClasses(objData, 1, 'first_arrow_check',  'first_chain_check');
+    customizeChainClasses(objData, 2, 'arrow_check',  'chain_check');
 }
 
-function checkThirdChain(objData){
-    if(objData.chain[2].pkmName == ''){
-        document.getElementById('arrow_check').classList.add('invisible');
-        document.getElementById('chain_check').classList.add('invisible');
+function customizeChainClasses(objData, chainNumber, arrowId, chainId){
+    if(objData.chain[chainNumber].pkmName == ''){
+        document.getElementById(arrowId).classList.add('invisible');
+        document.getElementById(chainId).classList.add('invisible');
     }
 }
-
+  
 function toggleVisibilityLoadingSpinner(){
     document.getElementById('loading_spinner').classList.toggle('invisible');
 }
@@ -165,24 +162,14 @@ function activateViewOfPkm(number, strValue){
     }
 }
 
-function loadNextPage(){
+function loadPage(direction){
     document.getElementById('main_container').replaceChildren();
     document.getElementById('ctrl_load_pkm').replaceChildren();
     document.getElementById('input_field').value = '';
     mainDataArr = [];
-    offset = offset + 20;
+    offset = offset + (direction * 20);
     BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`;
     init();
-}
-
-function loadPreviousPage(){
-    document.getElementById('main_container').replaceChildren();
-    document.getElementById('ctrl_load_pkm').replaceChildren();
-    document.getElementById('input_field').value = '';
-    mainDataArr = [];
-    offset = offset - 20;
-    BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`;
-    init(); 
 }
 
 function checkOffset(){
