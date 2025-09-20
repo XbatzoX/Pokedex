@@ -5,7 +5,6 @@ let mainDataArr = [];
 
 async function loadUrlPkm(){
     let dataURL = await loadData(BASE_URL);
-    console.log(dataURL);
     return dataURL;
 }
 
@@ -20,23 +19,10 @@ async function loadMainDataPkm(){
         let mainData = getMainViewObject();
         let pkmURL = dataURL.results[index].url;
         let dataFromApi = await loadData(pkmURL);
-        console.log(dataFromApi);
         let pushData = await fillMainDataObj(dataFromApi, mainData);
         mainData = pushData;
         pushDataToArray(mainData);
     }
-    // return new Promise((resolve, reject) => {
-    //         console.log('start');
-    //         console.log(color);
-        
-    //         setTimeout(() => {
-    //             if((color == '') || (color == 'null')){
-    //                 reject("hat nicht geklappt");
-    //             }else{
-    //                 resolve('');
-    //             }
-    //         }, 1000);
-    //     });
 }
 
 async function loadData(url=''){
@@ -52,9 +38,6 @@ async function fillMainDataObj(data, dataElements){
     mainData.image = data.sprites.other['official-artwork'].front_default;
     mainData = await fillTypesInMain(data, mainData);
     mainData = await fillColorInMain(data.id, mainData);
-    console.log(mainData);
-    // mainDataArr.push(mainData);
-    console.log(mainDataArr);
     return mainData;
 }
 
@@ -62,22 +45,6 @@ async function fillTypesInMain(data, dataElements){
     let mainData = dataElements;
     let countTypes = data.types.length;
     for (let index = 0; index < countTypes; index++) {
-        // switch (index) {
-        //     case 0:
-        //         mainData.types['slot_1'].name = data.types[index].type.name;
-        //         mainData.types['slot_1'].url = await loadTypesURL(data, index);
-        //         break;
-        //     case 1:
-        //         mainData.types['slot_2'].name = data.types[index].type.name;
-        //         mainData.types['slot_2'].url = await loadTypesURL(data, index);
-        //         break;
-        //     case 2:
-        //         mainData.types['slot_3'].name = data.types[index].type.name;
-        //         mainData.types['slot_3'].url = await loadTypesURL(data, index);
-        //         break;
-        //     default:
-        //         break;
-        // } 
         mainData = await loadAndFillTypeData(mainData, data, index);
     }
     return mainData;
@@ -86,21 +53,23 @@ async function fillTypesInMain(data, dataElements){
 async function loadAndFillTypeData(mainData, data, index){
     switch (index) {
             case 0:
-                mainData.types['slot_1'].name = data.types[index].type.name;
-                mainData.types['slot_1'].url = await loadTypesURL(data, index);
+                await getAndFillTypesDataFromApi(mainData, data, index, slot = 'slot_1');
                 break;
             case 1:
-                mainData.types['slot_2'].name = data.types[index].type.name;
-                mainData.types['slot_2'].url = await loadTypesURL(data, index);
+                await getAndFillTypesDataFromApi(mainData, data, index, slot = 'slot_2');
                 break;
             case 2:
-                mainData.types['slot_3'].name = data.types[index].type.name;
-                mainData.types['slot_3'].url = await loadTypesURL(data, index);
+                await getAndFillTypesDataFromApi(mainData, data, index, slot = 'slot_3');
                 break;
             default:
                 break;
         } 
     return mainData;
+}
+
+async function getAndFillTypesDataFromApi(mainData, data, index, slot = ''){
+    mainData.types[slot].name = data.types[index].type.name;
+    mainData.types[slot].url = await loadTypesURL(data, index);
 }
 
 async function loadTypesURL(data, index){
@@ -119,54 +88,8 @@ async function fillColorInMain(id, elementData){
 }
 
 async function loadDialogData(arrIndex){
-    // let dialogData = {
-    //     "basic" : {
-    //         "height" : "",
-    //         "weight" : "",
-    //         "base_exp" : "",
-    //         "abilities" : ""
-    //     },
-    //     "stats" : [{
-    //         "name" : "",
-    //         "value" : 0
-    //     },
-    //     {
-    //         "name" : "",
-    //         "value" : 0
-    //     },
-    //     {
-    //         "name" : "",
-    //         "value" : 0
-    //     },
-    //     {
-    //         "name" : "",
-    //         "value" : 0
-    //     },
-    //     {
-    //         "name" : "",
-    //         "value" : 0
-    //     },
-    //     {
-    //         "name" : "",
-    //         "value" : 0
-    //     }],
-    //     "chain" : [{
-    //         "pkmName" : "",
-    //         "image_url" : ""
-    //     },
-    //     {
-    //         "pkmName" : "",
-    //         "image_url" : ""
-    //     },
-    //     {
-    //         "pkmName" : "",
-    //         "image_url" : ""
-    //     }]
-    // };
     let dialogData = getDialogViewObject();
     let pkmID = mainDataArr[arrIndex].id;
-    console.log(pkmID);
-    
     let dataOfPkm = await loadData(PKM_URL + (pkmID));
     dialogData = fillDialogBasicData(dialogData, dataOfPkm);
     dialogData = fillDialogStatsData(dialogData, dataOfPkm);
@@ -174,7 +97,6 @@ async function loadDialogData(arrIndex){
     let dataOfSpecies = await loadData(speciesURL);
     let chainData = await getChainData(dataOfSpecies);
     fillChainData(dialogData, chainData);
-    console.log(dialogData);
     return dialogData;
 }
 
@@ -188,7 +110,6 @@ function fillDialogBasicData(basicObj, pkmData){
     }else{
         basicObj.basic.abilities = (pkmData.abilities[0].ability.name); 
     }
-    
     return basicObj;
 }
 
@@ -202,27 +123,19 @@ function fillDialogStatsData(statsObj, pkmData){
 
 async function getChainData(pkmData){
     let data = {};
-    // let chainData = [{
-    //     "pkmName" : "",
-    //     "image_url" : ""
-    // },
-    // {
-    //     "pkmName" : "",
-    //     "image_url" : ""
-    // },
-    // {
-    //     "pkmName" : "",
-    //     "image_url" : ""
-    // }];
     let chainData = getChainDataObject();
     let chainUrl = pkmData.evolution_chain.url;
     let chainDataBlock = await loadData(chainUrl);
-    console.log(chainDataBlock);
     
     chainData[0].pkmName = chainDataBlock.chain.species.name;
     data = await loadData(PKM_URL + chainData[0].pkmName);
     chainData[0].image_url = data.sprites.other['official-artwork'].front_default;
     data = checkIfSecondChainExist(chainDataBlock);
+    chainData = await checkAndFillChainData(data, chainData, chainDataBlock);
+    return chainData;
+}
+
+async function checkAndFillChainData(data, chainData, chainDataBlock){
     if(data.pkmName != ''){
         chainData[1].pkmName = chainDataBlock.chain.evolves_to[0].species.name;
         data = await loadData(PKM_URL + chainData[1].pkmName);
@@ -235,8 +148,6 @@ async function getChainData(pkmData){
         chainData[2].image_url = data.sprites.other['official-artwork'].front_default;
         }
     }
-    
-    console.log(chainData);
     return chainData;
 }
 
